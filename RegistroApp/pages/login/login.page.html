@@ -1,0 +1,29 @@
+<ion-content>
+  <ion-title class="ion-padding-top ion-text-center">
+    <ion-label>
+      <img src="assets/img/logoDuoc.png">
+      <h1>Sistema De Asistencia Duoc</h1>
+    </ion-label>
+  </ion-title>
+
+  <div class="ion-padding-vertical">
+    <ion-card class="ion-text-center">
+      <ion-card-title class="ion-text-center">  
+      </ion-card-title>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input type="text" [(ngModel)]="login.Usuario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" >Password</ion-label>
+          <ion-input type="password" [(ngModel)]="login.Password"></ion-input>
+        </ion-item>
+      </ion-card-content>
+      <ion-button shape="block" (click)="ingresar()">Ingresar</ion-button>
+      <ion-button shape="block" (click)="registrar()">Registrarse</ion-button>
+      <ion-button [routerLink]="['/restablecer']">¿Olvidó su contraseña?</ion-button>
+    </ion-card>
+  </div>
+</ion-content>
