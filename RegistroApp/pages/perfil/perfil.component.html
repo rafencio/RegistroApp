@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title #title class="ion-padding-start">
+      Sistema De Asistencia Duoc
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+    <ion-title class="ion-padding-top">
+      <img src="assets/img/logoDuoc.png">
+      <ion-label>
+        <h1 class="ion-text-center">¡Bienvenido!</h1>
+        <p *ngIf="usuario">Usuario: {{ usuario.nombreUsuario}}</p>
+      </ion-label>
+    </ion-title>
+    <b class="ion-text-center">
+      <h4>Información Sobre El Alumno</h4>
+    </b>
+    
+    <ion-item>
+      <ion-label position="ion-text-">Nombre: </ion-label>
+      <ion-input type="text" [(ngModel)]="persona.nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Apellido: </ion-label>
+      <ion-input type="text" [(ngModel)]="persona.apellido"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Asignatura: </ion-label>
+      <ion-select placeholder="Seleccione Asignatura" 
+          [(ngModel)]="persona.Asignatura.id">
+        <ion-select-option *ngFor="let Asignatura of Asignaturas" 
+          [value]="Asignatura.id">
+            {{Asignatura.nombre}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+  
+  <ion-button expand="full" (click)="startScan()">
+    <ion-icon slot="start" name="qr-scanner"></ion-icon>
+    Escanear QR
+  </ion-button>
+ 
+  <ion-button expand="full" (click)="reset()" color="warning" *ngIf="scanResult">
+    <ion-icon slot="start" name="refresh"></ion-icon>
+    Refrescar
+  </ion-button>  
+ 
+  <!-- Shows our camera stream -->
+  <video #video [hidden]="!scanActive" width="100%"></video>
+ 
+  <!-- Used to render the camera stream images -->
+  <canvas #canvas hidden></canvas>
+ 
+  <!-- Stop our scanner preview if active -->
+  <ion-button expand="full" (click)="stopScan()" color="danger" *ngIf="scanActive">
+    <ion-icon slot="start" name="close"></ion-icon>
+    Cancelar Escaneo
+  </ion-button>
+  <ion-row>
+    <!-- <ion-col size="12">
+      <ion-button expand="full"[routerLink]="['/login']">Cerrar Sesión</ion-button>
+    </ion-col>
+  </ion-row> -->
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-left ion-text">
+      Aplicación Hecha por Proyecto Nahuel
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
+  
